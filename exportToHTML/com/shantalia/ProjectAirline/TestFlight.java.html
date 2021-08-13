@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>TestFlight.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #5c6370;}
+.s3 { color: #89ca78;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+TestFlight.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.shantalia.ProjectAirline;</span>
+
+<span class="s0">import </span><span class="s1">java.io.*;</span>
+<span class="s0">public class </span><span class="s1">TestFlight {</span>
+
+	<span class="s0">public static void </span><span class="s1">main(String[] args) </span><span class="s0">throws </span><span class="s1">IOException{</span>
+		<span class="s2">// TODO Auto-generated method stub</span>
+
+		<span class="s1">HPAirFlight hp = </span><span class="s0">new </span><span class="s1">HPAirFlight(); </span><span class="s2">// Extends object</span>
+		<span class="s1">hp.loadFlightMap(</span><span class="s3">&quot;flights.txt&quot;</span><span class="s1">); </span><span class="s2">//file name is flights.txt, this loads the vertexes</span>
+		<span class="s1">System.out.println(hp); </span><span class="s2">// prints hp(the object vertex points)</span>
+		<span class="s0">if</span><span class="s1">(hp.findFlight(</span><span class="s3">&quot;T&quot;</span><span class="s1">, </span><span class="s3">&quot;X&quot;</span><span class="s1">))</span>
+			<span class="s1">System.out.println(</span><span class="s3">&quot;Path found&quot;</span><span class="s1">); </span><span class="s2">//</span>
+		<span class="s0">else</span>
+			<span class="s1">System.out.println(</span><span class="s3">&quot;No path found&quot;</span><span class="s1">);</span>
+		 <span class="s2">//file name is flights.txt, this loads the vertexes</span>
+		<span class="s1">hp =</span><span class="s0">new </span><span class="s1">HPAirFlight();</span>
+		<span class="s1">hp.loadFlightMap(</span><span class="s3">&quot;flights.txt&quot;</span><span class="s1">);</span>
+		<span class="s1">System.out.println(hp); </span><span class="s2">// prints hp(the object vertex points)</span>
+		<span class="s0">if</span><span class="s1">(hp.findFlight(</span><span class="s3">&quot;T&quot;</span><span class="s1">, </span><span class="s3">&quot;R&quot;</span><span class="s1">))</span>
+			<span class="s1">System.out.println(</span><span class="s3">&quot;Path found&quot;</span><span class="s1">); </span><span class="s2">//</span>
+		<span class="s0">else</span>
+			<span class="s1">System.out.println(</span><span class="s3">&quot;No path found&quot;</span><span class="s1">);</span>
+
+
+		
+
+	<span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

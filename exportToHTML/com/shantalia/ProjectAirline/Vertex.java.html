@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Vertex.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde;}
+.s1 { color: #bbbbbb;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Vertex.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.shantalia.ProjectAirline;</span>
+
+<span class="s0">public class </span><span class="s1">Vertex {</span>
+    <span class="s0">private </span><span class="s1">String city;</span>
+    <span class="s0">private boolean </span><span class="s1">visited;</span>
+
+    <span class="s0">public </span><span class="s1">Vertex() {</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">Vertex(String city) {</span>
+        <span class="s0">this</span><span class="s1">.city = city;</span>
+        <span class="s1">visited = </span><span class="s0">false</span><span class="s1">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">Vertex(String city, </span><span class="s0">boolean </span><span class="s1">v) {</span>
+        <span class="s0">this</span><span class="s1">.city = city;</span>
+        <span class="s1">visited = v;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setCity(String city) {</span>
+        <span class="s0">this</span><span class="s1">.city = city;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getCity() {</span>
+        <span class="s0">return </span><span class="s1">city;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setVisited(</span><span class="s0">boolean </span><span class="s1">visited) {</span>
+        <span class="s0">this</span><span class="s1">.visited = visited;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">isVisited() {</span>
+        <span class="s0">return </span><span class="s1">visited;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String toString() {</span>
+        <span class="s0">return </span><span class="s1">city;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">equals(Object v) {</span>
+        <span class="s0">return this</span><span class="s1">.city.equals(((Vertex) v).city);</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span>
+
+
+</pre>
+</body>
+</html>

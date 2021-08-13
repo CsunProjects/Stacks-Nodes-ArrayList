@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>HPAirFlight.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #89ca78;}
+.s3 { color: #5c6370;}
+.s4 { color: #d19a66;}
+.s5 { color: #2bbac5;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+HPAirFlight.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.shantalia.ProjectAirline;</span>
+
+<span class="s0">import </span><span class="s1">java.io.*;</span>
+<span class="s0">import </span><span class="s1">java.util.*;</span>
+<span class="s0">public class </span><span class="s1">HPAirFlight {</span>
+   <span class="s0">private </span><span class="s1">ArrayList&lt;Node&gt; list;</span>
+   <span class="s0">private </span><span class="s1">LinkedList&lt;Vertex&gt; route = </span><span class="s0">new </span><span class="s1">LinkedList&lt;&gt;();</span>
+	
+	
+   <span class="s0">public </span><span class="s1">HPAirFlight() {</span>
+      <span class="s1">list=</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;();</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public void </span><span class="s1">loadFlightMap(String fileName) </span><span class="s0">throws </span><span class="s1">IOException {</span>
+      <span class="s1">File infile = </span><span class="s0">new </span><span class="s1">File(fileName);</span>
+      <span class="s0">try</span><span class="s1">(Scanner in = </span><span class="s0">new </span><span class="s1">Scanner(infile);)</span>
+      <span class="s1">{</span>
+         <span class="s0">while</span><span class="s1">(in.hasNextLine()) {</span>
+            <span class="s1">String line = in.nextLine();</span>
+            <span class="s1">String[] tokens = line.split(</span><span class="s2">&quot; &quot;</span><span class="s1">); </span><span class="s3">// splits file characters being read</span>
+            <span class="s1">Node city = </span><span class="s0">new </span><span class="s1">Node(</span><span class="s0">new </span><span class="s1">Vertex(tokens[</span><span class="s4">0</span><span class="s1">])); </span><span class="s3">// assigns first token read as city</span>
+            <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s4">1</span><span class="s1">;i&lt;tokens.length;++i) { </span><span class="s3">//</span>
+               <span class="s1">city.addPath(</span><span class="s0">new </span><span class="s1">Vertex(tokens[i])); </span><span class="s3">//takes cities path</span>
+            <span class="s1">}</span>
+            <span class="s1">list.add(city);</span>
+         <span class="s1">}</span>
+      <span class="s1">}</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public boolean </span><span class="s1">findFlight(String start,String end) {</span>
+      <span class="s1">Stack&lt;Vertex&gt; stack = </span><span class="s0">new </span><span class="s1">Stack&lt;&gt;(); </span><span class="s3">//The stack</span>
+      <span class="s1">Vertex startCity = </span><span class="s0">new </span><span class="s1">Vertex(start,</span><span class="s0">true</span><span class="s1">); </span><span class="s3">//the vertex start point</span>
+      <span class="s1">Vertex endCity = </span><span class="s0">new </span><span class="s1">Vertex(end,</span><span class="s0">false</span><span class="s1">); </span><span class="s3">//the vertex endpoint</span>
+      <span class="s1">stack.push(startCity);</span><span class="s3">//pushes the point of the city that was started at into the bottom of stack</span>
+      <span class="s1">ArrayList&lt;Vertex&gt; path; </span><span class="s3">//list of vertex that the current city can travel to</span>
+      
+      <span class="s0">while</span><span class="s1">(!stack.isEmpty()) {</span>
+      	
+         <span class="s1">String city = stack.peek().getCity();</span>
+         <span class="s0">if</span><span class="s1">(city.equals(end)) {</span>
+            <span class="s0">while</span><span class="s1">(!stack.isEmpty())</span>
+               <span class="s1">route.addFirst(stack.pop());</span>
+            <span class="s1">System.out.println(route.toString());</span>
+         	
+            <span class="s0">return true</span><span class="s1">;</span>
+         <span class="s1">}</span>
+
+         <span class="s3">//🍉 -Code Starts here:  Left as exercise. Your code goes here</span>
+         <span class="s0">else </span><span class="s1">{</span>
+            <span class="s3">// Left as exercise : find the flight route, if it exists</span>
+            <span class="s3">//  get a vertex from stack and mark visited  (v)</span>
+            <span class="s1">Vertex CurrentCityPoint = stack.peek(); </span><span class="s3">//👀  city, at top is set to currentCity</span>
+            <span class="s1">CurrentCityPoint.setVisited(</span><span class="s0">true</span><span class="s1">);</span><span class="s3">// ✈ set to true indicating its visited</span>
+            <span class="s3">//  get the path of vertex v</span>
+            <span class="s1">path = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Vertex&gt;(); </span><span class="s3">// 🦜 setting the path to the vertex inside the arraylist</span>
+            <span class="s1">path = list.get(list.indexOf(</span><span class="s0">new </span><span class="s1">Node(CurrentCityPoint))).getPath(); </span><span class="s3">//🌴  setting path to getting index of node of current city and path</span>
+
+            <span class="s3">// if path.size() is zero then remove from stack</span>
+            <span class="s0">if</span><span class="s1">(path.size()==</span><span class="s4">0</span><span class="s1">){</span>
+               <span class="s1">stack.pop(); </span><span class="s3">// pops off top of stack (based on path visited since  zero means true</span>
+            <span class="s1">}</span>
+            <span class="s0">else </span><span class="s1">{  </span><span class="s3">// else</span>
+              <span class="s3">// get a vertex from the path that is not int the stack (unvisited), remove it from</span>
+               <span class="s3">// path and add to stack</span>
+               <span class="s3">// otherwise remove from stack</span>
+               <span class="s1">Vertex PathToCity; </span><span class="s3">//varible  vertex created</span>
+               <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">j =</span><span class="s4">0</span><span class="s1">; j&lt;path.size();j++) { </span><span class="s3">// for loop takes in size of path,</span>
+                  <span class="s1">PathToCity=path.get(j); </span><span class="s3">//sets citypath vertex as path</span>
+                  <span class="s0">if</span><span class="s1">(!PathToCity.isVisited()) { </span><span class="s3">// if vertex is not visited, if false, we want to consider the city for the path,</span>
+                     <span class="s1">stack.push(PathToCity); </span><span class="s3">// 📌 putting city vertex that was not visited in stack</span>
+                     <span class="s1">path.remove(PathToCity); </span><span class="s3">// 🚫  removing from path ?</span>
+                     <span class="s0">break</span><span class="s1">;</span>
+
+                  <span class="s1">}</span>
+                  <span class="s0">else </span><span class="s1">{</span>
+                     <span class="s1">stack.pop(); </span><span class="s3">//🍿 removes city from path because it has already been visited?</span>
+                  <span class="s1">}</span>
+               <span class="s1">}</span>
+            <span class="s1">}</span>
+
+         <span class="s1">}</span>
+      <span class="s1">}  		</span>
+      <span class="s0">return false</span><span class="s1">;</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public </span><span class="s1">String toString() {</span>
+      <span class="s1">String result=</span><span class="s2">&quot;&quot;</span><span class="s1">;</span>
+      <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s4">0</span><span class="s1">;i&lt;list.size();++i) {</span>
+         <span class="s1">result += list.get(i).toString()+</span><span class="s2">&quot;</span><span class="s5">\n</span><span class="s2">&quot;</span><span class="s1">;</span>
+      <span class="s1">}</span>
+      <span class="s0">return </span><span class="s1">result;</span>
+   <span class="s1">}</span>
+
+<span class="s1">}</span>
+
+<span class="s0">class </span><span class="s1">Node{</span>
+   <span class="s0">private </span><span class="s1">Vertex city;</span>
+   <span class="s0">private </span><span class="s1">ArrayList&lt;Vertex&gt; path;</span>
+   <span class="s0">public </span><span class="s1">Node() {</span>
+      <span class="s1">path = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;();</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public </span><span class="s1">Node(Vertex city) {</span>
+      <span class="s0">this</span><span class="s1">.city = city;</span>
+      <span class="s1">path = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;();</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public void </span><span class="s1">setCity(Vertex city) {</span>
+      <span class="s0">this</span><span class="s1">.city = city;</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public </span><span class="s1">Vertex getCity() {</span>
+      <span class="s0">return </span><span class="s1">city;</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public </span><span class="s1">ArrayList&lt;Vertex&gt; getPath(){</span>
+      <span class="s0">return </span><span class="s1">path;</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public void </span><span class="s1">addPath(Vertex v) {</span>
+      <span class="s1">path.add(v);</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public </span><span class="s1">String toString() {</span>
+      <span class="s0">return </span><span class="s1">city +</span><span class="s2">&quot;--&gt;&quot;</span><span class="s1">+path;</span>
+   <span class="s1">}</span>
+	
+   <span class="s0">public boolean </span><span class="s1">equals(Object e) {</span>
+      <span class="s1">Vertex v = ((Node)e).getCity();</span>
+      <span class="s0">return this</span><span class="s1">.city.equals(v);</span>
+   <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
